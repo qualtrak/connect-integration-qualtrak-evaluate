@@ -5,7 +5,7 @@ Qualtrak Evaluate by Qualtrak Solutions is a high-standard agent evaluation (qua
 
 This Quick Start configures resources to provide integration between Amazon Connect and Qualtrak Evaluate in a few easy steps. You can choose from three deployment options, depending on whether you already have a virtual private cloud (VPC) and data streaming set up on AWS.
 
-![Architecture for Qualtrak Evaluate integration](https://d0.awsstatic.com/partner-network/QuickStart/connect/connect-integration-qualtrak-architecture.png)
+![Architecture for Qualtrak Evaluate integration](https://fwd.aws/PqE4G)
 
 For details and launch information, see the [data sheet](https://aws.amazon.com/quickstart/connect/qualtrak-evaluate/).
 
