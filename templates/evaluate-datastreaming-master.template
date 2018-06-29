@@ -454,14 +454,19 @@
             "Assertions": [
                 {
                     "Assert": {
-                        "Fn::Equals": [
+                        "Fn::Contains": [
+                            [
+                                "us-east-1",
+                                "us-west-2",
+                                "eu-central-1",
+                                "ap-southeast-2"
+                            ],
                             {
                                 "Ref": "AWS::Region"
-                            },
-                            "us-east-1"
+                            }
                         ]
                     },
-                    "AssertDescription": "Region must be US East (N. Virginia) - us-east-1"
+                    "AssertDescription": "Region must be either US East (N. Virginia) - us-east-1, US West (Oregon) - us-west-2, EU (Frankfurt) - eu-central-1, Asia Pacific (Sydney) - ap-southeast-2"
                 }
             ]
         },
@@ -647,7 +652,17 @@
                         "Ref": "S3EvaluateBucket"
                     },
                     "SubnetID": {
-                        "Fn::GetAtt": "VPCStack.Outputs.PublicSubnet1ID"
+                        "Fn::Join": [
+                            ",",
+                            [
+                                {
+                                    "Fn::GetAtt": "VPCStack.Outputs.PublicSubnet1ID"
+                                },
+                                {
+                                    "Fn::GetAtt": "VPCStack.Outputs.PublicSubnet2ID"
+                                }
+                            ]
+                        ]
                     },
                     "VPCID": {
                         "Fn::GetAtt": "VPCStack.Outputs.VPCID"
