@@ -348,7 +348,7 @@
     "Mappings": {
         "AWSAMIRegionMap": {
             "us-east-1": {
-                "WS2016R2V1": "ami-73fd2d09"
+                "WS2016R2V1": "ami-062c1773038426f23"
             },
             "us-west-2": {
                 "WS2016R2V1": "ami-ace724d4"
