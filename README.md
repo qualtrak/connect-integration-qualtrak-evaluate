@@ -7,6 +7,6 @@ This Quick Start configures resources to provide integration between Amazon Conn
 
 ![Architecture for Qualtrak Evaluate integration](https://d0.awsstatic.com/partner-network/QuickStart/connect/connect-integration-qualtrak-architecture.png)
 
-For details and launch information, see the [data sheet](https://aws.amazon.com/quickstart/connect/qualtrak-evaluate/).
+For details and launch information, see the [data sheet](https://fwd.aws/PqE4G).
 
 To post feedback, submit feature ideas, or report bugs, use the **Issues** section of this GitHub repo.
