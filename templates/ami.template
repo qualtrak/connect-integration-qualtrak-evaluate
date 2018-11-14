@@ -351,13 +351,13 @@
                 "WS2016R2V1": "ami-062c1773038426f23"
             },
             "us-west-2": {
-                "WS2016R2V1": "ami-ace724d4"
+                "WS2016R2V1": "ami-0ff0f654d5cfe75e7"
             },
             "eu-central-1": {
-                "WS2016R2V1": "ami-10e45d7f"
+                "WS2016R2V1": "ami-0d668155cc441b610"
             },
             "ap-southeast-2": {
-                "WS2016R2V1": "ami-c503eea7"
+                "WS2016R2V1": "ami-0f254f8fd76ff85ef"
             }
         }
     },
