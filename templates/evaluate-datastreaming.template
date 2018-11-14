@@ -32,8 +32,7 @@
                     },
                     "Parameters": [
                         "InstanceType",
-                        "RDPFrom",
-                        "SubnetID"
+                        "RDPFrom"
                     ]
                 },
                 {
@@ -169,9 +168,6 @@
                 },
                 "S3EvaluateBucket": {
                     "default": "S3 Evaluate Bucket"
-                },
-                "SubnetID": {
-                    "default": "Subnet ID"
                 },
                 "VPCID": {
                     "default": "VPC ID"
@@ -376,14 +372,14 @@
         "QSS3BucketName": {
             "AllowedPattern": "^[0-9a-zA-Z]+([0-9a-zA-Z-]*[0-9a-zA-Z])*$",
             "ConstraintDescription": "Quick Start bucket name can include numbers, lowercase letters, uppercase letters, and hyphens (-). It cannot start or end with a hyphen (-)",
-            "Default": "quickstart-reference",
+            "Default": "aws-quickstart",
             "Description": "S3 bucket name for the Quick Start assets. This string can include numbers, lowercase letters, uppercase letters, and hyphens (-). It cannot start or end with a hyphen (-)",
             "Type": "String"
         },
         "QSS3KeyPrefix": {
             "AllowedPattern": "^[0-9a-zA-Z-/]*$",
             "ConstraintDescription": "Quick Start key prefix can include numbers, lowercase letters, uppercase letters, hyphens (-), and forward slash (/)",
-            "Default": "connect/integration/qualtrak/evaluate/latest/",
+            "Default": "connect-integration-qualtrak-evaluate/",
             "Description": "S3 key prefix for the Quick Start assets. Quick Start key prefix can include numbers, lowercase letters, uppercase letters, hyphens (-), and forward slash (/)",
             "Type": "String"
         },
@@ -408,10 +404,6 @@
             "MinLength": "3",
             "Type": "String"
         },
-        "SubnetID": {
-            "Description": "Subnet ID, must be same CIDR that was supplied when ElasticSearch was deployed",
-            "Type": "AWS::EC2::Subnet::Id"
-        },
         "VPCID": {
             "Description": "ID of your existing VPC for deployment",
             "Type": "AWS::EC2::VPC::Id"
@@ -422,14 +414,19 @@
             "Assertions": [
                 {
                     "Assert": {
-                        "Fn::Equals": [
+                        "Fn::Contains": [
+                            [
+                                "us-east-1",
+                                "us-west-2",
+                                "eu-central-1",
+                                "ap-southeast-2"
+                            ],
                             {
                                 "Ref": "AWS::Region"
-                            },
-                            "us-east-1"
+                            }
                         ]
                     },
-                    "AssertDescription": "Region must be US East (N. Virginia) - us-east-1"
+                    "AssertDescription": "Region must be either US East (N. Virginia) - us-east-1, US West (Oregon) - us-west-2, EU (Frankfurt) - eu-central-1, Asia Pacific (Sydney) - ap-southeast-2"
                 }
             ]
         },
@@ -543,7 +540,12 @@
                         "Ref": "VPCID"
                     },
                     "SubnetID": {
-                        "Ref": "SubnetID"
+                        "Fn::Join": [
+                            ",",
+                            {
+                                "Ref": "PublicSubnetID"
+                            }
+                        ]
                     },
                     "DBAdminUser": {
                         "Ref": "DBAdminUser"
